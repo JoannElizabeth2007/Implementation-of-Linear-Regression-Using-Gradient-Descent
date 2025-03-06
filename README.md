@@ -8,18 +8,81 @@ To write a program to predict the profit of a city using the linear regression m
 2. Anaconda – Python 3.7 Installation / Jupyter notebook
 
 ## Algorithm
-1. 
-2. 
-3. 
-4. 
+
+1.Import the standard libraries.
+
+2.Set variables for assigning dataset values.
+
+3.Import linear regression from sklearn.
+
+4.Assign the points for representing in the graph.
+
+5.Predict the regression for marks by using the representation of the graph.
+
+6.Compare the graphs and hence we obtained the linear regression for the given datas.
 
 ## Program:
 ```
 /*
 Program to implement the linear regression using gradient descent.
-Developed by: 
-RegisterNumber:  
+Developed by: JOANN ELIZABETH SAMUEL
+RegisterNumber: 212224040139
 */
+import pandas as pd
+
+import numpy as np
+
+import matplotlib.pyplot as plt
+
+from sklearn.metrics import mean_absolute_error,mean_squared_error
+
+df = pd.read_csv('student_scores.csv')
+
+print(df)
+
+df.head(0)
+
+df.tail(0)
+
+print(df.head())
+
+print(df.tail())
+
+x = df.iloc[:,:-1].values
+
+print(x)
+
+y = df.iloc[:,1].values
+
+print(y)
+
+from sklearn.model_selection import train_test_split
+
+x_train,x_test,y_train,y_test = train_test_split(x,y,test_size = 1/3,random_state = 0)
+
+from sklearn.linear_model import LinearRegression
+
+regressor = LinearRegression()
+
+regressor.fit(x_train,y_train)
+
+y_pred = regressor.predict(x_test)
+
+print(y_pred)
+
+print(y_test)
+
+mae = mean_absolute_error(y_test,y_pred)
+
+print("MAE: ",mae)
+
+mse = mean_squared_error(y_test,y_pred)
+
+print("MSE: ",mse)
+
+rmse = np.sqrt(mse)
+
+print("RMSE: ",rmse)
 ```
 
 ## Output:
